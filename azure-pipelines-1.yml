@@ -17,9 +17,8 @@ variables:
 
 steps:
 - script: |
-container:
-    mkdir -p '$(GOROOT)'
     mkdir -p '$(GOBIN)'
+    mkdir -p '$(GOROOT)'
     mkdir -p '$(GOPATH)/pkg'
     mkdir -p '$(modulePath)'
     shopt -s extglob
