@@ -31,7 +31,10 @@ steps:
     go version
     which go
   displayName: 'Set up the Go workspace'
-
+- task: Go@0
+  inputs:
+    command: 'get'
+    arguments: './...'
 - script: |
     go version
     go get -v -t -d ./...
