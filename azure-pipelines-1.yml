@@ -11,8 +11,8 @@ pool:
 
 variables:
   GOBIN:  '$(GOPATH)/bin' # Go binaries path
-  GOROOT: '/usr/bin' # Go installation path
-  GOPATH: '$(system.defaultWorkingDirectory)/gopath' # Go workspace path
+  GOROOT: '/usr/local/go' # Go installation path
+  GOPATH: '$(system.defaultWorkingDirectory)/go' # Go workspace path
   modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
 
 steps:
@@ -25,16 +25,14 @@ steps:
     mv !(gopath) '$(modulePath)'
     echo '##vso[task.prependpath]$(GOBIN)'
     echo '##vso[task.prependpath]$(GOROOT)/bin'
+    export PATH=$PATH:$GOROOT/bin
     sudo apt update
     sudo apt upgrade -y
     sudo apt install golang-go -y
     go version
     which go
   displayName: 'Set up the Go workspace'
-- task: Go@0
-  inputs:
-    command: 'get'
-    arguments: './...'
+
 - script: |
     go version
     go get -v -t -d ./...
