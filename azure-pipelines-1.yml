@@ -29,6 +29,7 @@ steps:
     sudo apt upgrade
     sudo apt install golang-go
     go version
+    which go
   displayName: 'Set up the Go workspace'
 
 - script: |
