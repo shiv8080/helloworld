@@ -36,6 +36,8 @@ jobs:
       run: pwd
     - name: pwd
       run: ls -l -R
+    - name: pwd
+      run: ./helloworld
 #     - name: Download a Build Artifact
 #       uses: actions/download-artifact@v3.0.0
 #       with:
